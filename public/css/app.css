@@ -707,10 +707,10 @@ aside .ubicacion {
 aside img {
     display: block;
 }
-#mapa {
+/* #mapa {
     height: 600px;
     width: 100%;
-}
+} */
 
 .mapa {
     height: 400px;

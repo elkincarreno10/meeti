@@ -1,6 +1,5 @@
 import Sequelize from "sequelize";
 import db from "../config/db.js";
-import { v4 as uuid } from 'uuid';
 import Categorias from "./Categorias.js";
 import Usuarios from "./Usuarios.js";
 
@@ -8,8 +7,7 @@ const Grupos = db.define('grupos', {
     id: {
         type: Sequelize.UUID,
         primaryKey: true,
-        allowNull: false,
-        defaultValue: uuid()
+        allowNull: false
     },
     nombre: {
         type: Sequelize.TEXT,

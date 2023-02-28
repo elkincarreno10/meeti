@@ -1,6 +1,5 @@
 import Sequelize from "sequelize";
 import db from "../config/db.js";
-import { v4 as uuid } from "uuid";
 import slug from "slug";
 import shortid from "shortid";
 
@@ -11,8 +10,7 @@ const Meeti = db.define('meeti', {
     id: {
         type: Sequelize.UUID,
         primaryKey: true,
-        allowNull: false,
-        defaultValue: uuid()
+        allowNull: false
     },
     titulo: {
         type: Sequelize.STRING,

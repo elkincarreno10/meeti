@@ -5,6 +5,7 @@ import Meeti from "../models/Meeti.js"
 import { formatearFecha, formatearHora, fechaActual } from "../helpers/index.js"
 import multer from "multer"
 import shortid from "shortid"
+import { v4 as uuid } from "uuid";
 import fs from 'fs'
 import Usuarios from "../models/Usuarios.js"
 
@@ -96,12 +97,15 @@ const crearGrupo = async (req, res) => {
         grupo.imagen = req.file.filename
     }
 
+    grupo.id = uuid();
+
     try {
         // Almacenar en la BD
         await Grupos.create(grupo)
         req.flash('exito', 'Se ha creado el grupo correctamente')
         res.redirect('/administracion')
     } catch (error) {
+        console.log(error)
         req.flash('error', 'Todos los campos son obligatorios')
         res.redirect('/nuevo-grupo')
     }
@@ -253,6 +257,8 @@ const crearMeeti = async (req, res) => {
     if(req.body.cupo === '') {
         meeti.cupo = 0
     }
+
+    meeti.id = uuid();
 
     // Almacenar en la BD
     try {
